@@ -1,0 +1,311 @@
+import java.io.*;
+import java.util.*;
+import java.text.*;
+import java.math.*;
+import java.util.regex.*;
+
+
+class Node
+{
+    int data;
+    Node next;
+    Node(int data)
+    {
+        this.data=data;
+        next=null;
+    }
+    
+}
+class LinkedList
+{
+    Node head;
+    void insertatfront(int data)
+    {
+        Node nen=new Node(data);
+        if(head==null)
+        { head=nen;}
+        else
+        {
+            Node temp=head;
+            nen.next=temp;
+            head=nen;
+        }
+    }
+    void insertafternode(int data,int key)
+    {
+      if(head==null)
+          return;
+      else
+      {
+          Node nen=new Node(data);
+          Node temp=head;
+          while(key!=temp.data)
+          {
+              temp=temp.next;
+          }
+          Node p=temp.next;
+          nen.next=p;
+          temp.next=nen;
+      }
+    }
+    void insertatend(int data)
+    {
+        Node nen=new Node(data);
+        if(head==null)
+            head=nen;
+        else
+        {
+         Node temp=head;
+         while(temp.next!=null)
+         {
+             temp=temp.next;
+            
+         }
+         temp.next=nen;
+        }
+    }
+    void delete(int data)
+    {
+        Node temp=head;
+        while(temp.next.data!=data)
+        {
+            temp=temp.next;
+        }
+        temp.next=temp.next.next;
+    }
+    void deleteatpos(int pos)
+    {
+        int i=0;
+        Node temp=head;
+        while(i+1!=pos)
+        { 
+            i++;
+            temp=temp.next;
+        }
+        temp.next=temp.next.next;
+        
+    }
+    void size()
+    {
+        if(head==null)
+            System.out.println(0);
+        else
+        {
+            Node temp=head;
+            int count=0;
+            while(temp.next!=null)
+            {
+                count=count+1;
+                temp=temp.next;
+            }
+            System.out.println(count);
+        }
+    }
+    void swap(int n,int m)
+    {
+        Node temp=head;
+        
+        while(temp.next.data!=n)
+            temp=temp.next;
+        Node temp2=head;
+        while(temp2.next.data!=m)
+            temp2=temp2.next;
+        
+       if(temp.data==n)
+       {head=temp2.next;}
+       
+           
+           
+       Node nn=temp.next;
+        Node mm=temp2.next; 
+        
+        
+        temp.next=mm;
+        temp2.next=nn;
+        Node nnext=nn.next;
+        nn.next=mm.next;
+        mm.next=nnext;
+    }
+    Node reverse(Node curr,Node prev)
+    {
+        Node next;
+        
+            next=curr.next;
+            curr.next=prev;
+          
+            if(next!=null)
+            {reverse(next,curr);
+            }
+            else
+            {head=curr;
+            }
+     return head;       
+    }
+    void mergesorted(Node head1)
+    {
+        Node l1=head;
+        Node l2=head1;
+        Node prevl1=head;
+        while(l1!=null && l2!=null)
+        {
+            if(l1.data<l2.data)
+            {
+                prevl1=l1;
+                l1=l1.next;
+            }
+            else
+            {
+                if(l1==head)
+                {
+                    Node temp=l2.next;
+                    l2.next=l1;
+                    head=l2;
+                    l1=l2;
+                    l2=temp;
+                    
+                }
+                else
+               {
+                   prevl1.next=l2;
+                    Node temp=l2.next;
+                    l2.next=l1;
+                    prevl1=l2;
+                    l2=temp;
+               }
+              
+                
+            }
+        }
+        if(l2!=null)
+        {
+            while(l2!=null)
+            {
+                prevl1.next=l2;
+                prevl1=l2;
+                l2=l2.next;
+                
+            }
+        }
+        
+    }
+    void middle()
+    {
+        Node slow=head;
+        Node fast=head;
+        while(fast!=null && fast.next!=null)
+        {
+            slow=slow.next;
+            fast=fast.next.next;
+           
+        }
+        System.out.println(slow.data);
+    }
+    void detectloop()
+    {
+        Node slow=head;
+        Node fast=head;
+        while(fast!=null && fast.next!=null)
+        {
+            if(slow==fast)
+            {
+                System.out.println("loop");
+                break;
+            }
+             slow=slow.next;
+            fast=fast.next.next;
+           
+        }
+        
+    }
+    void checkpalindrome()
+    {
+       printList();
+       Node slow=head;
+       Node fast=head;
+       Node prev1=head;
+      
+       while(fast!=null && fast.next!=null)
+        {
+            prev1=slow;
+            slow=slow.next;
+            fast=fast.next.next;
+            
+        }
+     if(fast!=null)
+     {prev1=slow;
+     slow=slow.next;
+     }
+     Node next;
+       Node prev=null;
+       Node curr=slow;
+       while(curr!=null)
+      {
+       next=curr.next;
+       curr.next=prev;
+       prev=curr;
+       curr=next;
+      }
+       prev1.next=prev;
+       
+       Node temp=head;
+       while(prev!=null)
+       {
+           
+          
+           if(temp.data!=prev.data)
+           {
+             System.out.println("no"); 
+             break;
+           }
+           temp=temp.next;
+           prev=prev.next;
+       }
+    }
+    
+    void printList()
+    {
+        Node temp=head;
+        while(temp!=null)
+        {
+            System.out.print(temp.data+" ");
+            temp=temp.next;
+        }
+        System.out.println();
+    }
+    
+    public static void main(String[] args)
+    {
+        LinkedList ll=new LinkedList();
+        LinkedList ll2=new LinkedList();
+        ll.insertatfront(3);
+        ll.insertatfront(2);
+        ll.insertatfront(1);
+        ll.insertatend(3);
+        ll.insertatend(2);
+        ll.insertatend(1);
+    
+        
+        ll.checkpalindrome();
+        
+        
+        ll2.head = new Node(1);
+        Node a2 = new Node(2);
+        Node a3 = new Node(3);
+        Node a4 = new Node(4);
+        Node a5 = new Node(5);
+        Node a6 = new Node(6);
+        ll2.head.next = a3;
+        a2.next=a3;
+        a3.next=a4;
+        a4.next=a5;
+        a5.next=a6;
+        a6.next=a3;
+        //ll2.detectloop();
+        //ll.mergesorted(ll2.head);
+        //ll.swap(3, 5);
+        //ll.middle();
+        //ll.head=ll.reverse(ll2.head,null);
+        //ll.printList();
+        
+    }
+}
