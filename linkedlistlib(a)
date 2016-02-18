@@ -1,0 +1,80 @@
+
+
+import java.io.*;
+import java.util.*;
+
+
+public class ll extends LinkedList
+{
+    void insertafternode(LinkedList lt,int data,int key)
+    {
+      if(lt.isEmpty()==true)
+          lt.add(data);
+      else
+      {
+        int temp = (int)lt.get(0);
+        int i=0;
+        while(key!=(int)lt.get(i))
+        {
+            i++;
+        }
+        lt.add(i+1,data); 
+      }
+        
+      }
+    void delete(LinkedList lt,int data)
+    {
+        int i=0;
+        while(data!=(int)lt.get(i))
+            i++;
+        lt.remove(i);
+    }
+    
+    void deleteatpos(LinkedList lt,int pos)  
+    {
+        int i=0;
+        while(i!=pos)
+            i++;
+        lt.remove(i);
+    }
+    void swap(LinkedList lt,int n,int m)
+    {
+        int i=lt.indexOf(n);
+        int j=lt.indexOf(m);
+        
+        if(i<j)
+        {lt.remove(i);
+        lt.remove(j-1);
+        lt.add(i,m);
+        lt.add(j,n);}
+        else
+        {
+          lt.remove(j);
+        lt.remove(i-1);
+        lt.add(j,n);
+        lt.add(i,m);  
+        }
+        
+        
+    }
+    
+    public static void main(String[] args)
+    {
+      LinkedList<Integer> lt=new LinkedList<Integer>();
+      lt.addFirst(2);
+      lt.add(0,3);
+      ll t=new ll();
+      //t.insertafternode(lt,4,3);
+      lt.addFirst(1);
+      lt.addLast(5);
+      lt.addLast(7);
+      //t.delete(lt,4);
+      //t.deleteatpos(lt,1);
+      t.swap(lt,5,3);
+      //System.out.println(lt.size());
+      System.out.println(lt);
+      
+      
+    }
+}
+
