@@ -1,0 +1,297 @@
+
+
+import java.io.*;
+import java.util.*;
+
+
+public class ll extends LinkedList
+{
+    void insertafternode(LinkedList lt,int data,int key)
+    {
+      if(lt.isEmpty()==true)
+          lt.add(data);
+      else
+      {
+        
+        int i=0;
+        while(key!=(int)lt.get(i))
+        {
+            i++;
+        }
+        lt.add(i+1,data); 
+      }
+        
+      }
+    void delete(LinkedList lt,int data)
+    {
+        int i=0;
+        while(data!=(int)lt.get(i))
+            i++;
+        lt.remove(i);
+    }
+    
+    void deleteatpos(LinkedList lt,int pos)  
+    {
+        int i=0;
+        while(i!=pos)
+            i++;
+        lt.remove(i);
+    }
+    void swap(LinkedList lt,int n,int m)
+    {
+        int i=lt.indexOf(n);
+        int j=lt.indexOf(m);
+        
+        if(i<j)
+        {lt.remove(i);
+        lt.remove(j-1);
+        lt.add(i,m);
+        lt.add(j,n);}
+        else
+        {
+        lt.remove(j);
+        lt.remove(i-1);
+        lt.add(j,n);
+        lt.add(i,m);  
+        }
+        
+        
+    }
+    void reverse(LinkedList lt)
+    {
+      int k=0;
+      int i=0;
+      while(k<lt.size()/2)  
+      {
+          Object temp=lt.get(i);
+          lt.set(i, lt.get(lt.size()-1-i));
+          lt.set(lt.size()-1-i,temp );
+          
+          i++;
+          k++;
+      }
+      
+    }
+    void merge(LinkedList lt,LinkedList lt2)
+    {
+        int i=0;
+        int j=0;
+     while( i<lt2.size() && j<lt.size())
+     {
+      if((int)lt.get(j)<(int)lt2.get(i))
+      {
+          j++;
+      }
+      else
+       {
+        lt.add(j,(int)lt2.get(i));
+        i++;
+       }
+     }
+     if(i+1!=lt2.size())
+     {
+         while(i<lt2.size())
+         {lt.add(j,(int)lt2.get(i));
+         i++;
+         j++;}
+     }
+    }
+    void middle(LinkedList lt)
+    {
+        int i=lt.size();
+        System.out.println(lt.get(i/2));
+    }
+    void insertsorted(LinkedList lt,int key)
+    {
+       int  i=0;
+       while(i<lt.size())
+       {
+           if((int)lt.get(i)<=key)
+               i++;
+           else
+           {
+               lt.add(i,key);
+               break;
+           }
+           
+       }
+    }
+    void checkpalindrome(LinkedList lt)
+    {
+       int i=0;
+       while(i<lt.size()/2)
+       {
+           if((int)lt.get(i)==(int)lt.get(lt.size()-1-i))
+               i++;
+           else
+           {
+               System.out.println("no");
+               break;
+           }
+       }
+    }
+    void findintersection(LinkedList lt,LinkedList lt2)
+    {
+      int c1=lt.size();
+      int c2=lt2.size();
+      int d=Math.abs(c2-c1);
+      int i;
+      int j;
+      if(c1<c2)
+      {
+          i=0;
+          j=d;
+      }
+      else
+      {
+          i=d;
+          j=0;
+      }
+      while(i<lt.size()&& j<lt2.size())
+      {
+          if(lt.get(i)==lt2.get(j))
+          {
+              System.out.println((int)lt.get(i));
+              break;
+          }
+          i++;
+          j++;
+      }
+    }
+    void removeduplicatesfromsorted(LinkedList lt)
+    {
+      int i=0;
+      while(i<lt.size()-1)
+      {
+          if((int)lt.get(i)==(int)lt.get(i+1))
+          {
+            lt.remove(i+1);  
+          }
+          else
+          {
+              i++;
+          }
+      }
+    }
+    void removeduplicatesfromunsorted(LinkedList lt)
+    {
+       int i=0;
+       Hashtable t=new Hashtable();
+       while(i<lt.size())
+       {
+           if(t.containsKey((int)lt.get(i))==false)
+           {
+               System.out.println((int)lt.get(i));
+               t.put((int)lt.get(i),true);
+               i++;
+           }
+           else
+           {
+               lt.remove(i);
+               
+           }
+           
+       }
+       
+    }
+    void pairwiseswap(LinkedList lt)
+    {
+      int i=0;
+      int j=1;
+      while(i<lt.size() && j<lt.size())
+      {
+         Object temp=lt.get(i);
+         lt.set(i,lt.get(j));
+         lt.set(j,temp);
+         i=i+2;
+         j=j+2;
+      }
+    }
+    void movelasttofirst(LinkedList lt)
+    {
+     Object h=lt.get(lt.size()-1);
+     lt.removeLast();
+     lt.add(0,h);
+    }
+    void findintersectionlistfromsortedlists(LinkedList lt,LinkedList lt2)
+    {
+        LinkedList<Integer> lt3=new LinkedList<Integer>();
+        int i=0;
+        int j=0;
+        while(i<lt.size() && j<lt2.size())
+        {
+            if((int)lt.get(i)<(int)lt2.get(j))
+                i++;
+            else if((int)lt.get(i)>(int)lt2.get(j))
+                j++;
+            else if((int)lt.get(i)==(int)lt2.get(j))
+            {
+                lt3.add((int)lt.get(i));
+                i++;
+                j++;
+            }   
+        }   
+       System.out.println(lt3);
+    }
+    void deletealternate(LinkedList lt)
+    {
+        int i=0;
+        while(i<lt.size()/2)
+        {
+            lt.remove(i+1);
+            i++;
+        }
+    }
+    void splitalternate(LinkedList lt)
+    {
+       LinkedList<Integer> lt3=new LinkedList<Integer>();
+       int i=0;
+       while(i<=lt.size()/2)
+       {
+           lt3.add((int)lt.get(i+1));
+           lt.remove(i+1);
+           i++;
+       }
+       System.out.println(lt3);
+    }
+    public static void main(String[] args)
+    {
+      LinkedList<Integer> lt=new LinkedList<Integer>();
+      LinkedList<Integer> lt2=new LinkedList<Integer>();
+      ll t=new ll();
+      
+      lt.add(1);
+      lt.add(2);
+      lt.add(3);
+      lt.add(4);
+      lt.add(5);
+      lt.add(6);
+      lt.add(7);
+      lt2.add(2);
+      lt2.add(4);
+      lt2.add(6);
+      lt2.add(8);
+      t.splitalternate(lt);
+      //t.merge(lt,lt2);
+      //t.insertsorted(lt,6);
+      //t.removeduplicatesfromsorted(lt);
+      //t.removeduplicatesfromunsorted(lt);
+      //t.pairwiseswap(lt);
+      //t.movelasttofirst(lt);
+      //t.findintersectionlistfromsortedlists(lt,lt2);
+      //t.deletealternate(lt);
+      //t.checkpalindrome(lt);
+      //t.findintersection(lt,lt2);
+//t.delete(lt,4);
+      //t.deleteatpos(lt,1);
+      //t.swap(lt,3,2);
+      //t.reverse(lt);
+      //System.out.println(lt.size());
+     // t.middle(lt);
+      System.out.println(lt);
+      //System.out.println(lt2);
+      
+      
+    }
+}
+
