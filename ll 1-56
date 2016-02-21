@@ -1,0 +1,1002 @@
+import java.io.*;
+import java.util.*;
+import java.text.*;
+import java.math.*;
+import java.util.regex.*;
+
+
+class Node
+{
+    int x;
+    int y;
+    Node next;
+    Node(int x,int y)
+    {
+        this.x=x;
+        this.y=y;
+        next=null;
+    }
+    
+}
+class LinkedList
+{
+    Node head;
+//    void insertatfront(int data)
+//    {
+//        Node nen=new Node(data);
+//        if(head==null)
+//        { head=nen;}
+//        else
+//        {
+//            Node temp=head;
+//            nen.next=temp;
+//            head=nen;
+//        }
+//    }
+//    void insertafternode(int data,int key)
+//    {
+//      if(head==null)
+//          return;
+//      else
+//      {
+//          Node nen=new Node(data);
+//          Node temp=head;
+//          while(key!=temp.data)
+//          {
+//              temp=temp.next;
+//          }
+//          Node p=temp.next;
+//          nen.next=p;
+//          temp.next=nen;
+//      }
+//    }
+//    void insertatend(int data)
+//    {
+//        Node nen=new Node(data);
+//        if(head==null)
+//            head=nen;
+//        else
+//        {
+//         Node temp=head;
+//         while(temp.next!=null)
+//         {
+//             temp=temp.next;
+//            
+//         }
+//         temp.next=nen;
+//        }
+//    }
+//    void delete(int data)
+//    {
+//        Node temp=head;
+//        while(temp.next.data!=data)
+//        {
+//            temp=temp.next;
+//        }
+//        temp.next=temp.next.next;
+//    }
+//    void deleteatpos(int pos)
+//    {
+//        int i=0;
+//        Node temp=head;
+//        while(i+1!=pos)
+//        { 
+//            i++;
+//            temp=temp.next;
+//        }
+//        temp.next=temp.next.next;
+//        
+//    }
+//    void size()
+//    {
+//        if(head==null)
+//            System.out.println(0);
+//        else
+//        {
+//            Node temp=head;
+//            int count=0;
+//            while(temp.next!=null)
+//            {
+//                count=count+1;
+//                temp=temp.next;
+//            }
+//            System.out.println(count);
+//        }
+//    }
+//    void swap(int n,int m)
+//    {
+//        Node temp=head;
+//        
+//        while(temp.next.data!=n)
+//            temp=temp.next;
+//        Node temp2=head;
+//        while(temp2.next.data!=m)
+//            temp2=temp2.next;
+//        
+//       if(temp.data==n)
+//       {head=temp2.next;}
+//       
+//           
+//           
+//       Node nn=temp.next;
+//        Node mm=temp2.next; 
+//        
+//        
+//        temp.next=mm;
+//        temp2.next=nn;
+//        Node nnext=nn.next;
+//        nn.next=mm.next;
+//        mm.next=nnext;
+//    }
+//    Node reverse(Node curr,Node prev)
+//    {
+//        Node next;
+//        
+//            next=curr.next;
+//            curr.next=prev;
+//          
+//            if(next!=null)
+//            {reverse(next,curr);
+//            }
+//            else
+//            {head=curr;
+//            }
+//     return head;       
+//    }
+//    void mergesorted(Node head1)
+//    {
+//        Node l1=head;
+//        Node l2=head1;
+//        Node prevl1=head;
+//        while(l1!=null && l2!=null)
+//        {
+//            if(l1.data<l2.data)
+//            {
+//                prevl1=l1;
+//                l1=l1.next;
+//            }
+//            else
+//            {
+//                if(l1==head)
+//                {
+//                    Node temp=l2.next;
+//                    l2.next=l1;
+//                    head=l2;
+//                    l1=l2;
+//                    l2=temp;
+//                    
+//                }
+//                else
+//               {
+//                   prevl1.next=l2;
+//                    Node temp=l2.next;
+//                    l2.next=l1;
+//                    prevl1=l2;
+//                    l2=temp;
+//               }
+//              
+//                
+//            }
+//        }
+//        if(l2!=null)
+//        {
+//            while(l2!=null)
+//            {
+//                prevl1.next=l2;
+//                prevl1=l2;
+//                l2=l2.next;
+//                
+//            }
+//        }
+//        
+//    }
+//    void middle()
+//    {
+//        Node slow=head;
+//        Node fast=head;
+//        while(fast!=null && fast.next!=null)
+//        {
+//            slow=slow.next;
+//            fast=fast.next.next;
+//           
+//        }
+//        System.out.println(slow.data);
+//    }
+//    void detectloop()
+//    {
+//        Node slow=head;
+//        Node fast=head;
+//        while(fast!=null && fast.next!=null)
+//        {
+//            if(slow==fast)
+//            {
+//                System.out.println("loop");
+//                break;
+//            }
+//             slow=slow.next;
+//            fast=fast.next.next;
+//           
+//        }
+//        
+//    }
+//    void checkpalindrome()
+//    {
+//       printList();
+//       Node slow=head;
+//       Node fast=head;
+//       Node prev1=head;
+//      
+//       while(fast!=null && fast.next!=null)
+//        {
+//            prev1=slow;
+//            slow=slow.next;
+//            fast=fast.next.next;
+//            
+//        }
+//     if(fast!=null)
+//     {prev1=slow;
+//     slow=slow.next;
+//     }
+//     Node next;
+//       Node prev=null;
+//       Node curr=slow;
+//       while(curr!=null)
+//      {
+//       next=curr.next;
+//       curr.next=prev;
+//       prev=curr;
+//       curr=next;
+//      }
+//       prev1.next=prev;
+//       
+//       Node temp=head;
+//       while(prev!=null)
+//       {
+//           
+//          
+//           if(temp.data!=prev.data)
+//           {
+//             System.out.println("no"); 
+//             break;
+//           }
+//           temp=temp.next;
+//           prev=prev.next;
+//       }
+//    }
+//    void findintersection(Node head1)
+//    {
+//        Node s=head;
+//        Node p;
+//        int count=0;
+//        while(s!=null)
+//        {
+//         count++; 
+//         s=s.next;
+//        }
+//        s=head1;
+//        int count1=0;
+//        while(s!=null)
+//        {
+//         count1++; 
+//         s=s.next;
+//        }
+//       if(count<count1)
+//       {
+//           
+//           s=head1;
+//           p=head;
+//       }
+//       else
+//       {s=head;
+//       p=head1;}
+//           int d=Math.abs(count1-count);
+//           int i=1;
+//           while(i<=d)
+//           {
+//               i++;
+//               s=s.next;
+//           }
+//           System.out.println(s.data);
+//          while(s!=null && p!=null)
+//          {
+//              if(s==p)
+//              {
+//                  System.out.println(s.data);
+//                  break;
+//              }
+//              s=s.next;
+//              p=p.next;
+//          }
+//       }
+//    
+//    void printList()
+//    {
+//        Node temp=head;
+//        while(temp!=null)
+//        {
+//            System.out.print(temp.data+" ");
+//            temp=temp.next;
+//        }
+//        System.out.println();
+//    }
+//    void removeduplicatesfromsorted()
+//    {
+//        Node temp=head;
+//        Node p;
+//        while(temp.next!=null && temp.next.next!=null)
+//        {
+//            if(temp.data==temp.next.data)
+//            {
+//                temp.next=temp.next.next;
+//                
+//            }
+//            else
+//            {
+//            temp=temp.next;
+//            }
+//        }
+//    }
+//    void removeduplicatesfromunsorted()
+//    {
+//      Node temp=head;
+//      Hashtable t=new Hashtable();
+//      Node prev=head;
+//      while(temp!=null)
+//      {
+//         
+//         if(t.containsKey(temp.data)==false)
+//         { t.put(temp.data,true);
+//           prev=temp;
+//         }
+//         else
+//         {
+//             prev.next=temp.next;
+//         }
+//         
+//         temp=temp.next;
+//      }
+//      
+//    }
+//    void pairwiseswap()
+//    {
+//        Node temp=head;
+//        Node prev=null;
+//        while(temp!=null && temp.next!=null)
+//        { Node p=temp.next.next;
+//        temp.next.next=temp;
+//          if(temp==head)
+//          {
+//           head=temp.next;
+//          }
+//          else
+//          {prev.next=temp.next;}
+//          temp.next=p; 
+//          prev=temp;
+//          temp=temp.next;
+//        }
+//        
+//    }
+//    void movelasttofirst()
+//    {
+//        Node temp=head;
+//        while(temp.next.next!=null)
+//        {temp=temp.next;
+//        }
+//        Node h=temp.next;
+//        temp.next=null;
+//        h.next=head;
+//        head=h;
+//    }
+//    void findintersectionlistfromsortedlists(Node head1)
+//    {
+//        LinkedList ll3=new LinkedList();
+//        Node s=head;
+//        Node p=head1;
+//        Node prev=null;
+//        while(s!=null && p!=null)
+//        {
+//         if(s.data<p.data)
+//             s=s.next;
+//         else if(s.data>p.data)
+//             p=p.next;
+//         else if(s.data==p.data)
+//         {
+//             Node a=new Node(s.data);
+//             
+//             if(ll3.head==null)
+//             {ll3.head=a;
+//              }
+//             
+//             else
+//             { prev.next=a;}
+//              prev=a;
+//         s=s.next;
+//         p=p.next;
+//         }
+//        }
+//                
+//                
+//      ll3.printList();          
+//        
+//    }
+//    void deletealternate()
+//    {
+//      Node temp=head;
+//      while(temp!=null && temp.next!=null )
+//      {
+//       temp.next=temp.next.next;
+//       temp=temp.next;
+//      }
+//    }
+//    void splitalternate()
+//    {
+//         LinkedList ll3=new LinkedList();
+//        Node temp=head;
+//        Node prev=null;
+//        while(temp!=null && temp.next!=null)
+//        {
+//            Node p=new Node(temp.next.data);
+//            if(temp==head)
+//            {
+//                ll3.head=p;
+//                
+//            }
+//            else
+//            {prev.next=p;}
+//            temp.next=temp.next.next;
+//            temp=temp.next;
+//            
+//            prev=p;
+//            
+//        }
+//      ll3.printList();  
+//    }
+//    void reverseingroup(int k)
+//    {
+//        Node curr=head;
+//        Node temp=head;
+//        Node next;
+//        Node tempprev=head;
+//       
+//        while(temp!=null)
+//        {  temp=curr;
+//           int i=0;
+//           Node prev=null;
+//        while(i<k && curr!=null)
+//        {
+//            next=curr.next;
+//            curr.next=prev;
+//            prev=curr;
+//            curr=next;
+//            i++;
+//        }
+//        if(temp==head)
+//        {
+//            head=prev;
+//            tempprev=temp;
+//        }
+//        else
+//        {tempprev.next=prev;
+//        tempprev=temp;
+//          }
+//        }
+//        
+//    }
+//     void reversealternateingroups(int key)
+//     {
+//       Node curr=head;
+//       Node next;
+//       Node prev=null;
+//       Node tempprev=head;
+//       
+//       Node temp=head;int k=0;
+//       while(k<key && temp!=null)
+//       {
+//           int i=0;
+//           temp=curr;
+//            if(k%2==0)
+//            {
+//                while(i<key && curr!=null)
+//                {
+//                    next=curr.next;
+//                    curr.next=prev;
+//                    prev=curr;
+//                    curr=next;
+//                    i++;
+//                }
+//                
+//                if(temp==head)
+//                {
+//                    head=prev;
+//                    
+//                } 
+//                tempprev.next=prev;
+//                tempprev=temp;
+//            }
+//            else
+//            {
+//                while(i<key && curr!=null)
+//                    curr=curr.next;
+//                tempprev=curr;
+//                curr=curr.next;
+//            }
+//             k++;
+//     }
+//    }
+//    void deletefromright()
+//    {
+//        Node temp=head;
+//        Node prev=head;
+//        while(prev.next!=null && temp.next!=null )
+//        {
+//            if(temp.data<temp.next.data)
+//            {
+//                if(temp==head)
+//                {
+//                    head=temp.next;
+//                    
+//                }
+//                else
+//                {
+//                 prev.next=temp.next;
+//                }
+//                
+//            }
+//            else{
+//            prev=temp;}
+//            temp=temp.next;
+//        }
+//        if(prev.data<temp.data)
+//            prev.next=null;
+//        
+//    }
+//    void splitoddeven()
+//    {
+//        Node temp=head;
+//        Node prev=head;
+//        Node last=head;
+//        int c=0;
+//        while(last.next!=null)
+//        {last=last.next;c++;}
+//        while(c>=0)
+//        {
+//          if(temp.data%2==0)
+//          {
+//              prev=temp;
+//              
+//          }
+//          else
+//          {
+//              prev.next=temp.next;
+//              last.next=temp;
+//              last=last.next;
+//          }
+//          temp=temp.next;c--;
+//        }
+//        last.next=null;
+//    }
+//    void removeloop()
+//    {
+//      Node slow=head;
+//      Node fast=head;
+//      while(fast!=null && fast.next!=null)
+//      {
+//          
+//          slow=slow.next;
+//          fast=fast.next.next;
+//            System.out.println(slow.data);
+//          System.out.println(fast.data);
+//          if(slow==fast)
+//              break;
+//         
+//      }
+//      System.out.println(fast.data);
+//      slow=head;
+//      Node prev=fast;
+//      while(slow!=fast)
+//      {
+//          slow=slow.next;
+//          prev=fast;
+//          fast=fast.next;
+//      }
+//      prev.next=null;
+//    }
+//    void add(Node head1)
+//    {
+//        LinkedList ll3=new LinkedList();
+//        Node temp=head;
+//        Node temp1=head1;
+//        int carry=0;
+//        int sum;
+//        Node prev=null;
+//        while(temp!=null && temp1!=null)
+//        {
+//           
+//           sum=temp.data+temp1.data+carry;
+//           if(sum>9)
+//           {
+//               carry=1;
+//               sum=sum%10;
+//           }
+//           else
+//               carry=0;
+//           Node a=new Node(sum);
+//           if(temp==head)
+//           {
+//               ll3.head=a;
+//               prev=a;
+//           }
+//           else 
+//           {prev.next=a;
+//           System.out.println(a.data);
+//           prev=a;}  
+//           temp=temp.next;
+//           temp1=temp1.next;
+//           
+//        }
+//        if(temp1!=null)
+//        {
+//            while(temp1!=null)
+//            { sum=temp1.data+carry;
+//                if(sum>9)
+//               {
+//                   carry=1;
+//                   sum=sum%10;
+//               }
+//               else
+//                   carry=0;
+//               Node a=new Node(sum);
+//               prev.next=a; 
+//               prev=a;
+//               temp1=temp1.next;
+//               
+//            }
+//        }
+//        else if(temp!=null)
+//        {
+//         while(temp!=null)
+//            { sum=temp.data+carry;
+//                if(sum>9)
+//               {
+//                   carry=1;
+//                   sum=sum%10;
+//               }
+//               else
+//                   carry=0;
+//               Node a=new Node(sum);
+//               prev.next=a; 
+//               prev=a;
+//               
+//             
+//         temp=temp.next;
+//        }}
+//      ll3.printList();      
+//    }
+//    
+//    void deleteunderconstraints(Node k)
+//    {
+//        k.data=k.next.data;
+//        k.next=k.next.next;
+//                
+//    }
+//    void unionintersection(Node head1)
+//    {
+//        LinkedList ll3=new LinkedList();
+//        LinkedList ll4=new LinkedList();
+//        Hashtable t=new Hashtable();
+//        Node s=head;
+//        Node p=head1;
+//        while(s!=null)
+//        {
+//          if(t.containsKey(s.data)==false)
+//              t.put(s.data,true);
+//              s=s.next;
+//        }
+//        Node prev=null;
+//        while(p!=null)
+//        {
+//            if(t.containsKey(p.data)==false)
+//               t.put(p.data,true);
+//            else
+//            {
+//                System.out.println(p.data);
+//                if(prev==null)
+//                {
+//                    ll3.head=p;
+//                }
+//                else
+//                {
+//                  prev.next=p;
+//                }
+//                prev=p;
+//            }
+//           p=p.next;
+//            
+//        }
+//        
+//        prev.next=null;
+//        ll3.printList();
+//        Enumeration e=Collections.enumeration(t.keySet());
+//        
+//        prev=ll4.head;
+//        while(e.hasMoreElements())
+//        {
+//            Node a=new Node((int)e.nextElement());
+//            if(prev==null)
+//              ll4.head=a;
+//            else
+//                prev.next=a;
+//            prev=a;
+//        }
+//        prev.next=null;
+//        ll4.printList();
+//    }
+//    void rotate(int k)
+//    {
+//     int i=0;
+//     Node temp=head;
+//     Node p=head;
+//     while(i<k)
+//     {
+//         temp=temp.next;
+//         i++;
+//     }
+//     Node start=temp.next;
+//     head=start;
+//     temp.next=null;
+//     while(start.next!=null)
+//         start=start.next;
+//     start.next=p;
+//    }
+//    void sort012()
+//    {
+//        int c1=0;
+//        int c2=0;
+//        int c3=0;
+//        Node temp=head;
+//        while(temp!=null)
+//        {
+//            if(temp.data==0)
+//                c1++;
+//            else if(temp.data==1)
+//                c2++;
+//            else
+//                c3++;
+//            temp=temp.next;
+//        }
+//        temp=head;
+//        while(c1>0)
+//        {
+//         temp.data=0;
+//         temp=temp.next;
+//         c1--;
+//        }
+//        while(c2>0)
+//        {
+//         temp.data=1;
+//         temp=temp.next;
+//         c2--;
+//        }
+//        while(c3>0)
+//        {
+//         temp.data=2;
+//         temp=temp.next;
+//         c3--;
+//        }
+//    }
+//    void deletemaftern(int m,int n)
+//    {
+//      Node temp=head;
+//      
+//      while(temp!=null && temp.next!=null)
+//      {
+//          int i=0;
+//          int j=0;
+//          while(i<m-1 && temp!=null && temp.next!=null)
+//          {
+//              i++;
+//              temp=temp.next;
+//          }
+//         
+//          Node p=temp.next;
+//          while(p.next!=null && p!=null && j<n-1)
+//          {
+//            p=p.next;
+//            j++;
+//          }
+//          temp.next=p.next;
+//          temp=temp.next;
+//           //System.out.println(temp.data);
+//         
+//          
+//      }
+//    }
+//    Node insertalternate(Node head1)
+//    {
+//        Node temp=head;
+//        Node p=head1;
+//        while(p!=null && temp!=null )
+//        {
+//          Node pn=p.next;
+//          p.next=temp.next;
+//          temp.next=p;
+//          p=pn;
+//          head1=p;
+//          temp=temp.next.next;
+//        }
+//        
+//      return head1;      
+//    }
+//    void pairwiseswap2()
+//    {
+//        Node temp=head;
+//        Node tempprev=null;
+//        while(temp!=null && temp.next!=null)
+//        {
+//            Node swap=temp.next.next;
+//            if(temp==head)
+//                head=temp.next;
+//            else
+//                tempprev.next=temp.next;
+//            temp.next.next=temp;
+//            
+//            temp.next=swap;
+//            tempprev=temp;
+//            temp=temp.next;
+//            
+//        }
+//    }
+    void printList2()
+    {
+        Node temp=head;
+        while(temp!=null)
+        {
+            System.out.print(temp.x+","+temp.y+" ");
+            temp=temp.next;
+        }
+        System.out.println();
+    }
+    void removemiddlepoints()
+    {
+      Node temp=head;
+       Node prev=null;
+      while(temp!=null && temp.next.next!=null)
+      {
+          System.out.print(temp.x+","+temp.y+" ");
+          if(temp.x==temp.next.x)
+          {   
+              temp=temp.next;
+              continue;
+          }
+          
+          else if(temp.y==temp.next.y)
+          {
+              prev=temp.next;
+              temp.next=temp.next.next;
+              continue;
+          }
+          else
+          { temp.next=prev;
+            temp=prev.next;
+          }
+      }
+    }
+    void rearrange()
+    {
+        Node  slow=head;
+        Node fast=head;
+        while(fast!=null && fast.next!=null)
+        {
+            slow=slow.next;
+            fast=fast.next.next;
+        }
+        Node temp=slow.next;
+        slow.next=null;
+        Node prev=null;
+        Node next;
+        while(temp!=null)
+        {
+            next=temp.next;
+            temp.next=prev;
+            prev=temp;
+            temp=next;
+        }
+        Node h=prev;
+        slow=head;
+        while(slow!=null && h!=null)
+        {
+            Node n=slow.next;
+            slow.next=h;
+            h=h.next;
+            h.next=n;
+        }
+    }
+    public static void main(String[] args)
+    {
+        LinkedList ll=new LinkedList();
+        LinkedList ll2=new LinkedList();
+        LinkedList ll3=new LinkedList();
+        ll3.head=new Node(0,10);
+        Node a1=new Node(1,10);
+        Node a2=new Node(5,10);
+        Node a3=new Node(7,10);
+        Node a4=new Node(2,10);
+        Node a5=new Node(20,10);
+        Node a6=new Node(40,10);
+        ll3.head.next=a1;
+        a1.next=a2;
+        a2.next=a3;
+        a3.next=a4;
+        a4.next=a5;
+        a5.next=a6;
+        a6.next=null;
+        ll3.printList2();
+        ll3.removemiddlepoints();
+        //ll3.rearrange();
+        ll3.printList2();
+        
+//        ll.insertatend(1);
+//        ll.insertatend(0);
+//        ll.insertatend(3);
+//        ll.insertatend(5);
+//        ll.insertatend(6);
+//        ll.insertatend(7);
+//        ll.insertatend(8);
+//        ll.insertatend(9);
+//        ll.insertatend(19);
+//        ll.insertatend(18);
+//        //ll.insertatend(29);
+//        ll.printList();
+//        ll.pairwiseswap2();
+//        //ll.sort012();
+//        //ll.deletemaftern(1,1);
+//        ll.printList();
+        //l2.removeloop();
+        //ll.rotate(4);
+        //ll.printList();
+        //ll.deletealternate();
+        //ll.splitalternate();
+        //ll.removeduplicatesfromsorted();
+        //ll.removeduplicatesfromunsorted();
+        //ll.pairwiseswap();
+        //ll.movelasttofirst();
+        //ll.splitoddeven();
+        //ll.deletefromright();
+       // ll.reversealternateingroups(3);
+        //ll.reverseingroup(3);
+        //ll.printList();
+        
+//        ll2.head = new Node(8);
+//        Node a2 = new Node(4);
+//        Node a3 = new Node(2);
+//        Node a4 = new Node(6);
+//       Node a5 = new Node(3);
+//        Node a6 = new Node(12);
+//        ll2.head.next = a2;
+//        a2.next=a3;
+//        a3.next=a4;
+//        a4.next=a5;
+//        a5.next=a6;
+//        a6.next=null;
+        //ll2.printList(); 
+        //ll2.head=ll.insertalternate(ll2.head);
+        
+        //ll.printList();
+        //ll2.printList();
+        //ll2.removeloop();
+        //ll.deleteunderconstraints(a4);
+        //ll.unionintersection(ll2.head);
+        //ll2.printList();
+        //ll.add(ll2.head);
+        //ll.findintersectionlistfromsortedlists(ll2.head);
+        //ll2.printList();
+        //ll.findintersection(ll2.head);
+        //ll2.detectloop();
+        //ll.mergesorted(ll2.head);
+        //ll.swap(3, 5);
+        //ll.middle();
+        //ll.head=ll.reverse(ll2.head,null);
+        //ll.printList();
+        
+    }
+}
