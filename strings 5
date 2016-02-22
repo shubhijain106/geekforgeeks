@@ -1,0 +1,43 @@
+import java.io.*;
+import java.util.*;
+import java.text.*;
+import java.math.*;
+import java.util.regex.*;
+
+class Solution
+{
+    public static void main(String[] args)
+    {
+        try
+        {
+            InputStreamReader in=new InputStreamReader(System.in);
+            BufferedReader in1=new BufferedReader(in);
+            String s1=in1.readLine();
+            String s2=in1.readLine();
+            Hashtable t=new Hashtable();
+            int flag=0;
+            for(int i=0;i<s1.length();i++)
+            {
+             if(t.containsKey(s1.charAt(i))==false)
+                 t.put(s1.charAt(i),s2.charAt(i));
+             else
+             {
+                 if(s2.charAt(i)!=(char)t.get((char)s1.charAt(i)))
+                 {flag=1;break;}
+                     
+             }
+                    
+            }
+            if(flag==1)
+                System.out.println("no");
+            else
+                System.out.println("yes");
+                   
+            
+           
+             
+        }
+        catch(IOException e){}
+    }
+        
+}
