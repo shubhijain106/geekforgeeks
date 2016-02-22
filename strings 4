@@ -1,0 +1,41 @@
+import java.io.*;
+import java.util.*;
+import java.text.*;
+import java.math.*;
+import java.util.regex.*;
+
+class Solution
+{
+    public static void main(String[] args)
+    {
+        try
+        {
+            InputStreamReader in=new InputStreamReader(System.in);
+            BufferedReader in1=new BufferedReader(in);
+            String s1=in1.readLine();
+            Stack s=new Stack();
+            int c=0;
+            for(int i=0;i<s1.length();i++)
+            {
+                 if(s1.charAt(i)=='(')
+                     s.push(s1.charAt(i));
+                 else if(s1.charAt(i)==')')
+                 {
+                     
+                      if(s.isEmpty()==false && (char)s.peek()=='(')
+                      {
+                          s.pop();
+                          c=c+1;
+                      }
+                    
+                 }
+                    
+                   
+            }
+           
+             System.out.println(2*c); 
+        }
+        catch(IOException e){}
+    }
+        
+}
