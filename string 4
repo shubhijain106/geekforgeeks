@@ -1,0 +1,33 @@
+import java.io.*;
+import java.util.*;
+import java.text.*;
+import java.math.*;
+import java.util.regex.*;
+
+class Solution
+{
+    public static void main(String[] args)
+    {
+        try
+        {
+            InputStreamReader in=new InputStreamReader(System.in);
+            BufferedReader in1=new BufferedReader(in);
+            String s1=in1.readLine();
+            StringBuffer s=new StringBuffer(s1);
+            for(int i=0;i<s1.length()/2;i++)
+            {
+                if(((int)s.charAt(i)>=97 && (int)s.charAt(i)<=122) || ((int)s.charAt(i)>=65 && (int)s.charAt(i)<=90))
+                {
+                    char temp=s.charAt(i);
+                    s.setCharAt(i,s.charAt(s1.length()-1-i));
+                    s.setCharAt(s1.length()-1-i,temp);
+                }
+                
+            }
+           System.out.println(s);
+            
+        }
+        catch(IOException e){}
+    }
+        
+}
