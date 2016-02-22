@@ -1,0 +1,61 @@
+import java.io.*;
+import java.util.*;
+import java.text.*;
+import java.math.*;
+import java.util.regex.*;
+
+class Solution
+{
+    public static void main(String[] args)
+    {
+        try
+        {
+            InputStreamReader in=new InputStreamReader(System.in);
+            BufferedReader in1=new BufferedReader(in);
+            String s1=in1.readLine();
+            String s2=in1.readLine();
+            ArrayList<Character> a=new ArrayList<Character>();
+            int diff=Math.abs(s1.length()-s2.length());
+            
+                    if(diff>1)
+                System.out.println("no");
+            
+                    else if(diff==1)
+                {   int flaf=0;
+                    int n;
+                    if(s1.length()<s2.length())
+                        n=s1.length();
+                    else
+                        n=s2.length();
+                    
+                        for(int i=0;i<n;i++)
+                        {
+                          if(s1.charAt(i)!=s2.charAt(i))
+                           {flaf=1;break;}
+                        }
+                        if(flaf==1)
+                            System.out.println("no");
+                        else
+                            System.out.println("yes by either edition or deletion");
+                }
+                    else if(diff==0)
+                    {
+                        int c=0;
+                        int flaf=0;
+                      for(int i=0;i<s1.length();i++)
+                        {
+                          if(s1.charAt(i)!=s2.charAt(i))
+                           c++;
+                           if(c>1)
+                           {flaf=1;break;}
+                        } 
+                      if(flaf==1)
+                            System.out.println("no");
+                        else
+                            System.out.println("yes by editing");
+                    }
+        }
+        catch(IOException e){}
+    }
+        
+}
