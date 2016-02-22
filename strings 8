@@ -1,0 +1,37 @@
+import java.io.*;
+import java.util.*;
+import java.text.*;
+import java.math.*;
+import java.util.regex.*;
+
+class Solution
+{
+    public static void main(String[] args)
+    {
+        try
+        {
+            InputStreamReader in=new InputStreamReader(System.in);
+            BufferedReader in1=new BufferedReader(in);
+            String s1=in1.readLine();
+            ArrayList<Character> a=new ArrayList<Character>();
+            for(int i=0;i<s1.length();i++)
+            {
+                a.add(s1.charAt(i));
+                   
+            }
+            for(int i=0;i<a.size();)
+            {
+                System.out.println(a.size() +" "+a.get(i));
+                
+                if(a.get(i)==' ')
+                    a.remove(i);
+                
+                else 
+                    i++;
+            }
+            System.out.println(a);
+        }
+        catch(IOException e){}
+    }
+        
+}
