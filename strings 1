@@ -1,0 +1,63 @@
+import java.io.*;
+import java.util.*;
+import java.text.*;
+import java.math.*;
+import java.util.regex.*;
+
+class Solution
+{
+    public static void main(String[] args)
+    {
+        try{
+        InputStreamReader in=new InputStreamReader(System.in);
+        BufferedReader in1=new BufferedReader(in);
+        String str=in1.readLine();
+        StringBuffer s=new StringBuffer(str);
+        
+        for(int i=0;i<str.length();i++)
+        {
+            if(s.charAt(i)=='0')
+                s.setCharAt(i, '1');
+            else
+                s.setCharAt(i, '0');
+        }
+
+        System.out.println("one"+s);
+        int j=0;
+        for(int i=str.length()-1;i>=0;i--)
+        {
+          if(s.charAt(i)=='1' && j==0)
+          {
+              s.setCharAt(i, '0');
+              j=0;
+          }
+          else if(s.charAt(i)=='0' && j==0)
+              {
+               s.setCharAt(i, '1');
+               j=1;
+          }
+          else if(s.charAt(i)=='1' && j==1)
+          {
+              s.setCharAt(i, '1');
+               j=1;
+          }
+          else if(s.charAt(i)=='0' && j==1)
+              {
+               s.setCharAt(i, '0');
+               j=1;
+              }
+          
+        }
+        
+        String two=new String(s);
+       
+        if(j==0)
+        {
+         two="1"+two; 
+        }
+        System.out.println("two"+two);
+        }
+        catch(IOException e){}
+    }
+        
+}
