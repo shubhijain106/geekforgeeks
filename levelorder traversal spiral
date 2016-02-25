@@ -1,0 +1,132 @@
+
+
+import java.io.*;
+import java.util.*;
+
+
+class Node
+{
+ int data;
+ Node left;
+ Node right;
+Node(int data)
+{
+    this.data=data;
+    left=right=null;
+}
+}
+ 
+public class BinaryTree 
+{
+    Node root;
+    
+ 
+    void spirallevelordertraversal()
+  {
+    if(root==null)  
+        return ;
+    
+    
+    else
+    {
+       int i=0;
+       ArrayList<Node> a=new ArrayList<Node>();
+       a.add(root);
+       int size=a.size();
+       
+       while(!a.isEmpty())
+       {
+            if(i%2==0)
+           {   int n=a.size();
+               for(int j=0;j<n;j++)
+           {
+                Node temp=a.get(n-j-1);
+           if(temp.left!=null)
+                   a.add(temp.left);
+               if(temp.right!=null)
+                   a.add(temp.right); 
+               
+           }
+               for(int j=0;j<n;j++)
+               { System.out.print(a.get(0).data+" ");
+                 a.remove(a.get(0));
+               }
+           }
+           else
+           {     int n=a.size();
+               for(int j=0;j<n;j++)
+               {
+                 Node temp=a.get(n-j-1);
+                 
+                 if(temp.right!=null)
+                   a.add(temp.right);
+               if(temp.left!=null)
+                   a.add(temp.left); 
+              
+               }
+               
+               
+               for(int j=0;j<n;j++)
+               { System.out.print(a.get(0).data+" ");
+                 a.remove(a.get(0));
+               }
+           }
+           i++;
+           print(a);
+           System.out.println();
+       }
+        
+    }
+    
+  }
+  
+  void inorder(Node root)
+  {
+      if(root==null)
+          return;
+      else
+      {
+          inorder(root.left);
+          System.out.println(root.data);
+          inorder(root.right);
+          
+      }
+  }
+  void print(ArrayList<Node> a)
+  {
+   for(int i=0;i<a.size();i++)
+      System.out.print( a.get(i).data);
+   System.out.println();
+   } 
+  
+            public static void main(String[] args)
+    {
+      BinaryTree tree=new BinaryTree();
+      tree.root=new Node(1);
+      tree.root.left=new Node(2);
+      tree.root.right=new Node(3);
+      tree.root.left.left=new Node(4);
+      tree.root.left.right=new Node(5);
+      //tree.root.right.left=new Node(6);
+      tree.root.right.right=new Node(6);
+      tree.root.left.right.left=new Node(7);
+      tree.root.left.right.right=new Node(8);
+      tree.root.right.right.left=new Node(9);
+     
+      BinaryTree tre=new BinaryTree();
+      tre.root=new Node(1);
+      tre.root.left=new Node(2);
+      tre.root.right=new Node(3);
+      tre.root.left.left=new Node(4);
+      tre.root.left.right=new Node(5);
+      //tre.root.right.left=new Node(6);
+      tre.root.right.right=new Node(6);
+      tre.root.left.right.left=new Node(7);
+      tre.root.left.right.right=new Node(8);
+      tre.root.right.right.left=new Node(9);
+     //tree.inorder(tree.root);
+            tree.spirallevelordertraversal();
+              //tree.inorder(tree.root);
+    }
+}
+
