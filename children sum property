@@ -1,0 +1,77 @@
+
+
+import java.io.*;
+import java.util.*;
+
+
+class Node
+{
+ int data;
+ Node left;
+ Node right;
+Node(int data)
+{
+    this.data=data;
+    left=right=null;
+}
+}
+ 
+public class BinaryTree 
+{
+    Node root;
+    
+ 
+  void inordertraversal()
+  {
+      ArrayList<Node> a=new ArrayList<Node>();
+      ArrayList<Node> s=new ArrayList<Node>();
+      a.add(root);
+      Node temp=root;
+      while(temp.right!=null && temp.left!=null)
+      {
+         int sum=0;
+         temp=a.get(0);
+          a.remove(temp);
+          if(temp.left!=null)
+          {sum=temp.left.data+sum;
+          a.add(temp.left);}
+          if(temp.right!=null)
+          {sum=temp.right.data+sum;
+          a.add(temp.right);}
+          System.out.println("sum"+sum);
+          System.out.println(temp.data);
+          System.out.println(a.size());
+          if(sum==temp.data)
+           continue;
+                  else {System.out.println("no");
+                  break;}
+       }
+          
+      
+  }
+  void print(Queue<Node> q)
+  {
+   Iterator iterator = q.iterator();
+    while(iterator.hasNext()){
+        Node a =(Node)iterator.next();
+        System.out.print(a.data + " ");
+}
+   System.out.println();  
+  }
+            public static void main(String[] args)
+    {
+      BinaryTree tree=new BinaryTree();
+      tree.root=new Node(7);
+      tree.root.left=new Node(5);
+      tree.root.right=new Node(2);
+      tree.root.left.left=new Node(0);
+      tree.root.left.right=new Node(5);
+      //tree.root.right.left=new Node(6);
+      tree.root.right.right=new Node(2);
+      tree.root.left.right.left=new Node(2);
+      tree.root.left.right.right=new Node(3);
+      tree.root.right.right.left=new Node(2);
+      tree.inordertraversal();
+    }
+}
+
