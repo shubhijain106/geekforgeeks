@@ -1,0 +1,49 @@
+import java.io.*;
+import java.util.*;
+import java.math.BigInteger;
+import java.util.Arrays;
+
+// you can also use imports, for example:
+// import java.util.*;
+
+// you can write to stdout for debugging purposes, e.g.
+// System.out.println("this is a debug message");
+
+class Solution {
+    static int binarysearch(int[] arr,int x)
+    {
+        int l=0;
+        int r=arr.length-1;
+        
+        while(l<=r)
+        {
+         int mid=(l+r)/2;
+         System.out.println("mid"+arr[mid]);
+         if(arr[mid]>x)
+         {
+           
+           r=mid-1;  
+         }
+         else if(arr[mid]<x)
+         {
+             l=mid+1;
+             
+         }
+         else
+           return 1;
+        }
+        return 0;
+    }
+    
+  public static void main(String[] args)
+  {
+      int[] arr={2,3,4,10,40,50,60,70};
+     
+      int x=70;
+      int s=binarysearch(arr,x);
+      if(s==1)
+          System.out.println("found");
+      else
+          System.out.println(" not found");
+  }
+}
