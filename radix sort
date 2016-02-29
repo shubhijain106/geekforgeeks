@@ -1,0 +1,84 @@
+import java.io.*;
+import java.util.*;
+import java.math.BigInteger;
+import java.util.Arrays;
+
+// you can also use imports, for example:
+// import java.util.*;
+
+// you can write to stdout for debugging purposes, e.g.
+// System.out.println("this is a debug message");
+
+class Solution {
+   
+    static void insertionsort(ArrayList<Float> arr)
+    {
+        System.out.println(arr);
+      for(int i=1;i<arr.size();i++)
+      {
+          Float temp=arr.get(i);
+          int j=i-1;
+          for(j=i-1;j>=0;j--)
+          {
+              if(temp<arr.get(j))
+              {
+               arr.set(j+1,arr.get(j));
+              }
+              else
+                  break;
+          }
+          arr.set(j+1,temp);
+      }
+      System.out.println(arr);
+      
+    }
+    static void radixsort(float[] arr,int n)
+    {
+      
+       ArrayList<Float>[] list=new ArrayList[n];
+       for(int i=0;i<n;i++)
+       {
+           list[i] = new ArrayList<Float>();
+       }
+       
+       for(int i=0;i<arr.length;i++)
+       {
+          int index=(int)(n*arr[i]);
+          
+          list[index].add(arr[i]);
+       }
+        System.out.println(Arrays.toString(list)); 
+       for(int i=0;i<n;i++)
+       {
+           if(list[i].size()!=0)
+               insertionsort(list[i]);
+       }
+     System.out.println(Arrays.toString(list)); 
+       int k=0;
+       for(int j=0;j<list.length;j++)
+       {
+           for(int i=0;i<list[j].size();i++)
+           {
+               arr[k]=list[j].get(i);
+               k++;
+           }
+       }
+       System.out.println(Arrays.toString(arr));  
+        
+    }
+    
+    
+  public static void main(String[] args)
+  {
+  //    int[] arr={1,4,1,2,7,5,2};
+      float[] arr = new float[10];
+      for(int i = 0; i < arr.length; i++)
+      {
+          arr[i] = (float)(Math.random());
+      }
+       System.out.println(Arrays.toString(arr));
+       radixsort(arr,10);
+       //System.out.println(Arrays.toString(arr));
+
+  }
+}
