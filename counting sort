@@ -1,0 +1,53 @@
+import java.io.*;
+import java.util.*;
+import java.math.BigInteger;
+import java.util.Arrays;
+
+// you can also use imports, for example:
+// import java.util.*;
+
+// you can write to stdout for debugging purposes, e.g.
+// System.out.println("this is a debug message");
+
+class Solution {
+   
+    static void countingsort(int[] arr,int range)
+    {
+      
+       int[] count=new int[10];
+       System.out.println(Arrays.toString(arr)); 
+       for(int i=0;i<arr.length;i++)
+       {
+         count[arr[i]]++;  
+       }
+       int sum=0;
+       for(int i=1;i<count.length;i++)
+       {
+        sum=count[i-1];
+        count[i]=count[i]+sum;
+       }
+       System.out.println(Arrays.toString(count)); 
+       int[] out=new int[arr.length];
+       for(int i=0;i<arr.length;i++)
+       {
+         out[count[arr[i]]-1]= arr[i];
+         count[arr[i]]--;
+       }
+        System.out.println(Arrays.toString(out));
+    }
+    
+    
+  public static void main(String[] args)
+  {
+      int[] arr={1,4,1,2,7,5,2};
+//      int[] arr = new int[6];
+//      for(int i = 0; i < arr.length; i++)
+//      {
+//          arr[i] = (int)(Math.random()*10+1);
+//      }
+       System.out.println(Arrays.toString(arr));
+       countingsort(arr,10);
+       //System.out.println(Arrays.toString(arr));
+
+  }
+}
