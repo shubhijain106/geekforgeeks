@@ -1,0 +1,50 @@
+import java.io.*;
+import java.util.*;
+import java.math.BigInteger;
+import java.util.Arrays;
+
+// you can also use imports, for example:
+// import java.util.*;
+
+// you can write to stdout for debugging purposes, e.g.
+// System.out.println("this is a debug message");
+
+class Solution {
+  static void mergesorted(int[] arr,int[] arr2)
+  {
+      int j=0;
+      for(int i=0;i<arr.length;i++)
+      {
+       if(arr[i]>arr2[j])
+       {
+           int temp=arr[i];
+           arr[i]=arr2[j];
+           arr2[j]=temp;
+       }
+       int key=arr2[0];
+       int k=1;
+       for( k=1;k<arr2.length;k++)
+       {
+           if(arr2[k]<key)
+               arr2[k-1]=arr2[k];
+           else break;
+       }
+       arr2[k-1]=key;
+       System.out.println(Arrays.toString(arr));
+       System.out.println(Arrays.toString(arr2));
+      }
+     
+   }
+  
+    
+    
+  public static void main(String[] args)
+  {
+  
+      int[] arr = {1,5,9,10,15,20};
+      int[] arr2 = {2,3,8,13};
+       System.out.println(Arrays.toString(arr));
+      mergesorted(arr,arr2);
+
+  }
+}
