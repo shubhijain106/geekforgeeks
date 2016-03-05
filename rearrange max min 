@@ -1,0 +1,58 @@
+import java.io.*;
+import java.util.*;
+import java.math.BigInteger;
+import java.util.Arrays;
+
+// you can also use imports, for example:
+// import java.util.*;
+
+// you can write to stdout for debugging purposes, e.g.
+// System.out.println("this is a debug message");
+
+class Solution {
+  static void rearrangemaxmin(int[] arr)
+  {
+      
+      for(int i=0;i<=arr.length;i++)
+      {
+          int temp=arr[i];
+          System.out.println("temp"+temp);
+          while(temp>0)
+          {
+             int j=0;
+             if(i<arr.length/2)
+                 j=2*i+1;
+              else
+                  j=2*(arr.length-1-i);
+             if(i==j)
+             {
+                 arr[i]=-temp;
+                 break;
+             }
+             int swap=arr[j];
+             arr[j]=temp;
+             temp=swap;
+             arr[i]= - arr[i];
+             System.out.println(j+" "+i+" "+temp);
+             i=j;
+             
+             System.out.println(Arrays.toString(arr));
+          }
+          
+      }
+  }
+    
+    
+  public static void main(String[] args)
+  {
+  
+      int[] arr = new int[7];
+      for(int i = 0; i < arr.length; i++)
+      {
+          arr[i] = i+1;
+      }
+       System.out.println(Arrays.toString(arr));
+      rearrangemaxmin(arr);
+
+  }
+}
