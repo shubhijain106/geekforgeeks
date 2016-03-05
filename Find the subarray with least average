@@ -1,0 +1,52 @@
+import java.io.*;
+import java.util.*;
+import java.math.BigInteger;
+import java.util.Arrays;
+
+// you can also use imports, for example:
+// import java.util.*;
+
+// you can write to stdout for debugging purposes, e.g.
+// System.out.println("this is a debug message");
+
+class Solution {
+  static void subarraywithleastavg(int[] arr,int k)
+  {
+      
+      int min_sum=0;
+      int l=0;
+      int r=k-1;
+      for(int i=0;i<k;i++)
+      {
+        min_sum=min_sum+arr[i];
+      }
+      int sum=min_sum;
+      for(int i=k;i<arr.length;i++)
+      {
+          
+          
+          sum=sum-arr[i-k]+arr[i];
+          
+          if(sum < min_sum)
+          {
+              min_sum=sum;
+              l=i-k+1;
+              r=i;
+          }
+         
+      }
+      System.out.println(l+" "+r);
+   }
+  
+    
+    
+  public static void main(String[] args)
+  {
+  
+      int[] arr =  {3,7,5,20,-10,0,12};
+      //int[] arr2 = {1,1,1,1,1,0,1};
+       //System.out.println(Arrays.toString(arr));
+      subarraywithleastavg(arr,2);
+
+  }
+}
