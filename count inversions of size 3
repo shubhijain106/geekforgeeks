@@ -1,0 +1,48 @@
+import java.io.*;
+import java.util.*;
+import java.math.BigInteger;
+import java.util.Arrays;
+
+// you can also use imports, for example:
+// import java.util.*;
+
+// you can write to stdout for debugging purposes, e.g.
+// System.out.println("this is a debug message");
+
+class Solution {
+  static void countinversions(int[] arr)
+  {
+      int count=0;
+      for(int i=1;i<arr.length-1;i++)
+      {
+        int big=arr[i];
+        int bigc=0;
+        for(int j=0;j<i;j++)
+        {
+          if(big<arr[j])
+            bigc++;  
+        }
+        int small=arr[i];
+        int smallc=0;
+        for(int j=i+1;j<arr.length;j++)
+        {
+          if(small>arr[j])
+            smallc++;  
+        }
+        count=count+smallc*bigc;
+      }
+      System.out.println(count);
+   }
+  
+    
+    
+  public static void main(String[] args)
+  {
+  
+      int[] arr =  {9,6,5,4,8};
+      //int[] arr2 = {1,1,1,1,1,0,1};
+       //System.out.println(Arrays.toString(arr));
+      countinversions(arr);
+
+  }
+}
