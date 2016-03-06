@@ -1,0 +1,55 @@
+import java.io.*;
+import java.util.*;
+import java.math.BigInteger;
+import java.util.Arrays;
+
+// you can also use imports, for example:
+// import java.util.*;
+
+// you can write to stdout for debugging purposes, e.g.
+// System.out.println("this is a debug message");
+
+class Solution {
+  static void zeroflips(int[] arr,int m)
+  {
+     int wl=0;
+     int wr=0;
+     int len=0;
+     int c=0;
+      while(wr<arr.length)
+      {
+       if(c<=m)
+       {
+           if(arr[wr]==0)
+           c++;
+           wr++;
+       }
+       
+       
+       else if(c>m)
+       {
+           if(arr[wl]==0)
+           c--;
+           wl++;
+       }
+      }
+       
+      for(int i=wl;i<wr;i++)
+      {
+          if(arr[i]==0)
+          System.out.println(i);
+      }
+   }
+  
+    
+    
+  public static void main(String[] args)
+  {
+  
+      int[] arr =  {1,0,0,1,1,0,1,0,1,1,1};
+      //int[] arr2 = {1,1,1,1,1,0,1};
+       //System.out.println(Arrays.toString(arr));
+      zeroflips(arr,1);
+
+  }
+}
