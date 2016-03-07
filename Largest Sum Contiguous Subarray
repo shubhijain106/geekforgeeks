@@ -1,0 +1,41 @@
+import java.io.*;
+import java.util.*;
+import java.math.BigInteger;
+import java.util.Arrays;
+
+// you can also use imports, for example:
+// import java.util.*;
+
+// you can write to stdout for debugging purposes, e.g.
+// System.out.println("this is a debug message");
+
+class Solution {
+  static void maxsumsubarray(int[] arr)
+  {
+     
+     int max=arr[0];
+     int sum=arr[0];
+     for(int i=1;i<arr.length;i++)
+     {
+       sum=Math.max(arr[i],arr[i]+sum);
+       System.out.println(sum);
+       
+       max=Math.max(sum,max);
+         
+     }
+     System.out.println(max);
+     
+   }
+  
+    
+    
+  public static void main(String[] args)
+  {
+  
+      int[] arr =  {-2, -3, 4, -1, -2, 1, 5, -3};
+      int[] arr2 = {3,0,4,1,2};
+       //System.out.println(Arrays.toString(arr));
+      maxsumsubarray(arr);
+
+  }
+}
