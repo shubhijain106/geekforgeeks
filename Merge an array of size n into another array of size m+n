@@ -1,0 +1,90 @@
+import java.io.*;
+import java.util.*;
+import java.math.BigInteger;
+import java.util.Arrays;
+
+// you can also use imports, for example:
+// import java.util.*;
+
+// you can write to stdout for debugging purposes, e.g.
+// System.out.println("this is a debug message");
+
+class Solution {
+  static void merge(int[] arr,int[] arr2)
+  {
+     int n=arr.length;
+     int last=n-1;
+     
+     for(int i=n-1;i>=0;i--)
+     {
+         if(arr[last]==-1 && arr[i]!=-1)
+         {
+             arr[last]=arr[i];
+             arr[i]=-1;
+             last--;
+         }
+         else if(arr[last]==-1 && arr[i]==-1)
+         {
+          continue;   
+         }
+         else if(arr[last]!=-1)
+         {
+             last--;
+         }
+         System.out.println(Arrays.toString(arr));
+     }
+     int j=arr2.length;
+     int i=0;
+     int k=0;
+     while(i<arr2.length && j<arr.length)
+     {
+       System.out.println(arr[j]);
+       System.out.println(arr2[i]);
+       if(arr[j]>arr2[i])
+       {
+           arr[k]=arr2[i];
+           i++;
+           k++;
+       }
+       else if(arr[j]<=arr2[i])
+       {
+           arr[k]=arr[j];
+           arr[j]=-1;
+           j++;
+           k++;
+       }
+        System.out.println(Arrays.toString(arr));     
+     }
+      
+    if(i<arr2.length)
+    {
+         
+         while(i<arr2.length)
+        {
+         arr[k]=arr2[i];
+           i++;
+           k++;   
+        }
+    }
+    if(j<arr.length)
+    {
+        while(j<arr.length)
+        {
+         arr[k]=arr[j];
+           j++;
+           k++;   
+        }
+    }
+      System.out.println(Arrays.toString(arr));  
+  }
+    
+  public static void main(String[] args)
+  {
+  
+      int[] arr =  {2, 8, -1, -1, -1, 13, -1, 15};
+      int[] arr2 = {5, 7, 9, 25,50};
+       //System.out.println(Arrays.toString(arr));
+      merge(arr,arr2);
+
+  }
+}
