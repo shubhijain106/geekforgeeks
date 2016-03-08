@@ -1,0 +1,67 @@
+import java.io.*;
+import java.util.*;
+import java.math.BigInteger;
+import java.util.Arrays;
+import java.util.Map.Entry;
+import java.util.stream.Collectors;
+
+// you can also use imports, for example:
+// import java.util.*;
+
+// you can write to stdout for debugging purposes, e.g.
+// System.out.println("this is a debug message");
+
+class Solution {
+  
+    static int binarysearch(int[] arr,int l,int h,int x)
+  {
+   if(l<=h)
+   {
+       int mid=(l+h)/2;
+       if(arr[mid]==x)
+           return mid;
+       else if(arr[mid]<x && (mid==h ||arr[mid+1]>x))
+           return mid;
+       else if(arr[mid]>x && (mid==l || arr[mid-1]<x))
+           return mid;
+       else if(arr[mid]>x)
+           return binarysearch(arr,l,mid-1,x);
+       else if(arr[mid]<x)
+           return binarysearch(arr,mid+1,h,x);
+       
+   }
+   return -1;   
+  }
+static void floorceiling(int[] arr,int x)
+{
+    int n=arr.length;
+  int z =binarysearch(arr,0,n-1,x);
+ System.out.println(z);
+ if(arr[z]==x)
+ {
+   System.out.println("floor "+" ceiling "+arr[z]);  
+ }
+ else if(arr[z]>x && z==0)
+  System.out.println("floor does not exist "+" ceiling "+arr[z]); 
+ else if(arr[z]<x && z==n-1)
+   System.out.println("floor "+arr[z]+" ceiling  does not exist");    
+ else if(arr[z]>x && arr[z-1]<x)
+   System.out.println("floor "+arr[z-1]+" ceiling "+arr[z]);  
+ else if(arr[z]<x && arr[z+1]>x)
+    System.out.println("floor "+arr[z]+" ceiling "+arr[z+1]);  
+}
+
+    
+  
+  public static void main(String[] args)
+  {
+  
+      int[] arr =  {1, 2, 8, 10, 10, 12, 19};
+    //int[] arr2 = {2, 3, 5, 6};
+       System.out.println(Arrays.toString(arr));
+       // System.out.println(Arrays.toString(arr2));
+      floorceiling(arr,10);
+      
+
+  }
+}
