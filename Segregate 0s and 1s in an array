@@ -1,0 +1,53 @@
+import java.io.*;
+import java.util.*;
+import java.math.BigInteger;
+import java.util.Arrays;
+import java.util.Map.Entry;
+import java.util.stream.Collectors;
+
+// you can also use imports, for example:
+// import java.util.*;
+
+// you can write to stdout for debugging purposes, e.g.
+// System.out.println("this is a debug message");
+
+class Solution {
+  
+    static void segregate01(int[] arr)
+  {
+      int n=arr.length;
+      int l=0;
+      int r=n-1;
+      while(l<r)
+      {
+          System.out.println("l"+arr[l]);
+          System.out.println("r"+arr[r]);
+          if(arr[l]==0)
+              l++;
+          if(arr[r]==1)
+              r--;
+          if((arr[l]==0 && arr[r]==1)||(arr[l]==1 && arr[r]==0))
+          {
+              int temp=arr[l];
+              arr[l]=arr[r];
+              arr[r]=temp;
+              l++;
+              r--;
+          }
+      }
+      System.out.println(Arrays.toString(arr));
+      
+  }
+     
+    
+  
+  public static void main(String[] args)
+  {
+  
+      int[] arr =  {0, 1, 0, 1, 0, 0, 1, 1, 1, 0};
+     // int[] arr2 = {5, 7, 9, 25,50};
+       System.out.println(Arrays.toString(arr));
+      segregate01(arr);
+
+  }
+}
