@@ -1,0 +1,44 @@
+import java.io.*;
+import java.util.*;
+import java.math.BigInteger;
+import java.util.Arrays;
+import java.util.Map.Entry;
+import java.util.stream.Collectors;
+
+// you can also use imports, for example:
+// import java.util.*;
+
+// you can write to stdout for debugging purposes, e.g.
+// System.out.println("this is a debug message");
+
+class Solution {
+  
+    static void differencelarge(int[] arr)
+  {
+      int n=arr.length;
+      int diff;
+      int max=0;
+      int sum=0;
+      for(int i=0;i<n-1;i++)
+      {
+        diff=arr[i+1]-arr[i]; 
+        sum=sum+diff;
+        sum=Math.max(diff,sum);
+        max=Math.max(max,sum);
+      }
+      System.out.println(max);
+}
+
+
+    
+  
+  public static void main(String[] args)
+  {
+  
+      int[] arr =  {2, 3, 10, 6, 4, 8, 1};
+     // int[] arr2 = {5, 7, 9, 25,50};
+       System.out.println(Arrays.toString(arr));
+      differencelarge(arr);
+
+  }
+}
