@@ -1,0 +1,59 @@
+import java.io.*;
+import java.util.*;
+import java.math.BigInteger;
+import java.util.Arrays;
+import java.util.Map.Entry;
+import java.util.stream.Collectors;
+
+// you can also use imports, for example:
+// import java.util.*;
+
+// you can write to stdout for debugging purposes, e.g.
+// System.out.println("this is a debug message");
+
+class Solution {
+  
+    static void smallestandsecondsmallest(int[] arr)
+  {
+      int min;
+      int smin;
+    if(arr[0]<arr[1])
+    {
+        min=arr[0];
+        smin=arr[1];
+    }
+    else
+    {
+        min=arr[1];
+        smin=arr[0];
+    }
+    for(int i=2;i<arr.length;i++)
+    {
+       if(arr[i]>=smin)
+           continue;
+       
+           
+       else if(arr[i]<smin && arr[i]>min)
+           smin=arr[i];
+       else if(arr[i]<smin && arr[i]<min)
+       {
+          smin=min;
+          min=arr[i];
+       }
+    }
+System.out.println(smin+" "+min);
+  }
+     
+     
+    
+  
+  public static void main(String[] args)
+  {
+  
+      int[] arr =  {12, 13, 1, 10, 34, 1};
+      int[] arr2 = {5, 7, 9, 25,50};
+       System.out.println(Arrays.toString(arr));
+      smallestandsecondsmallest(arr);
+
+  }
+}
