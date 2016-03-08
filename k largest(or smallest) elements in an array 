@@ -1,0 +1,44 @@
+import java.io.*;
+import java.util.*;
+import java.math.BigInteger;
+import java.util.Arrays;
+import java.util.Map.Entry;
+import java.util.stream.Collectors;
+
+// you can also use imports, for example:
+// import java.util.*;
+
+// you can write to stdout for debugging purposes, e.g.
+// System.out.println("this is a debug message");
+
+class Solution {
+  
+    static void klargest(int[] arr,int k)
+  {
+      PriorityQueue<Integer> queue = new PriorityQueue<>(arr.length, Collections.reverseOrder());
+for(int i=0;i<arr.length;i++)
+{
+    queue.add(arr[i]);
+}
+int i=0;
+while( i<k)
+{
+    int val=queue.poll();
+    System.out.println(val);
+    i++;
+}
+    
+}
+     
+    
+  
+  public static void main(String[] args)
+  {
+  
+      int[] arr =  {1, 23, 12, 9, 30, 2, 50};
+     // int[] arr2 = {5, 7, 9, 25,50};
+       System.out.println(Arrays.toString(arr));
+      klargest(arr,3);
+
+  }
+}
