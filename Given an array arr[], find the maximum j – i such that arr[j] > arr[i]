@@ -1,0 +1,59 @@
+import java.io.*;
+import java.util.*;
+import java.math.BigInteger;
+import java.util.Arrays;
+import java.util.Map.Entry;
+import java.util.stream.Collectors;
+
+// you can also use imports, for example:
+// import java.util.*;
+
+// you can write to stdout for debugging purposes, e.g.
+// System.out.println("this is a debug message");
+
+class Solution {
+  
+    static void maxdiff(int[] arr)
+  {
+    int n=arr.length;
+    
+      int[] left=new int[n];
+      int[] right=new int[n];
+      left[0]=arr[0];
+      for(int i=1;i<n;i++)
+      {
+          left[i]=Math.max(left[i-1], arr[i]);
+      }
+      right[n-1]=arr[n-1];
+      for(int i=n-2;i>=0;i--)
+      {
+          right[i]=Math.max(right[i+1], arr[i]);
+      }
+      int j=0;
+      int i=0;
+      int maxdiff=-1;
+      while(i<n && j<n)
+      {
+          if(left[i]<right[j])
+          {
+              int diff=j-i;
+              maxdiff=Math.max(maxdiff,diff);
+              j++;
+          }
+          else
+              i++;
+      }
+      System.out.println(maxdiff);
+  }
+    
+ 
+  public static void main(String[] args)
+  {
+      int[] arr =  {6, 5, 4, 3, 2, 1};
+      System.out.println(Arrays.toString(arr));
+      // System.out.println(Arrays.toString(arr2));
+      maxdiff(arr);
+      
+
+  }
+}
