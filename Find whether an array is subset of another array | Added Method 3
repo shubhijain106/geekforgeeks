@@ -1,0 +1,49 @@
+import java.io.*;
+import java.util.*;
+import java.math.BigInteger;
+import java.util.Arrays;
+import java.util.Map.Entry;
+import java.util.stream.Collectors;
+
+// you can also use imports, for example:
+// import java.util.*;
+
+// you can write to stdout for debugging purposes, e.g.
+// System.out.println("this is a debug message");
+
+class Solution {
+  
+    static void checksubset(int[] arr,int[] arr2)
+  {
+    int n=arr.length;
+    Hashtable ht=new Hashtable();
+    for(int i=0;i<n;i++)
+    {
+        ht.put(arr[i],true);
+    }
+     int k=arr2.length;
+     for(int i=0;i<k;i++)
+     {
+      if(ht.containsKey(arr2[i])==true)
+          continue;
+      else
+      {
+          System.out.println("no");
+          break;
+      }
+     }
+      
+  }
+    
+ 
+  public static void main(String[] args)
+  {
+      int[] arr =  {10, 5, 2, 23, 19};
+      int[] arr2 =  {19, 5, 3};
+      System.out.println(Arrays.toString(arr));
+      // System.out.println(Arrays.toString(arr2));
+      checksubset(arr,arr2);
+      
+
+  }
+}
