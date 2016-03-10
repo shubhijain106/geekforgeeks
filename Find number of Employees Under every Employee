@@ -1,0 +1,103 @@
+
+
+
+
+import java.io.*;
+import java.util.*;
+import java.math.BigInteger;
+import java.util.Arrays;
+
+
+class Solution 
+{
+    static void Manager(String[][] arr)
+    {
+     
+        Hashtable ht=new Hashtable();
+        Hashtable hm=new Hashtable();
+        Set set=ht.keySet();
+        Iterator it=set.iterator();
+        int i=0;
+        
+        for( i=0;i<arr.length;i++)
+        {
+            hm.put(arr[i][0],true);
+           
+        }
+            
+        
+        for( i=0;i<arr.length;i++)
+        {
+         
+            String emp=arr[i][0]; 
+            String manager=arr[i][1];
+            if(manager.equals(emp))
+                continue;
+            if(ht.containsKey(manager)==false)
+            {
+                if(ht.containsKey(emp))
+                {
+                    String s=(String)ht.get(emp);
+                    String v=s+emp;
+                    ht.put(manager,v);
+                }
+                else 
+                    ht.put(manager,emp);
+                
+            }
+            else
+            {
+                String val=(String)ht.get(manager);
+                if(ht.containsKey(emp))
+                {
+                    String s=(String)ht.get(emp);
+                    String v=s+emp+val;
+                    ht.put(manager,v);
+                }
+                else
+                {
+                    val=val+(emp);
+                ht.put(manager,val);
+                }
+            }
+         
+        }
+        
+        
+        
+        set=ht.keySet();
+        it=set.iterator();
+        
+            
+        
+       while(it.hasNext())
+        {
+          String str=(String)it.next();
+          int v=((String)ht.get(str)).length();
+          System.out.println((String)ht.get(str));
+          System.out.println(str+"---->"+v);  
+        }
+       
+       set=hm.keySet();
+        it=set.iterator();
+        while(it.hasNext())
+        {
+            String str=(String)it.next();
+            
+            
+            
+            if(ht.containsKey(str)==false)
+                System.out.println(str+"---->"+"0");
+        }
+           
+    }
+    
+  
+  public static void main(String[] args)
+  {
+    String[][] arr={{"A","C"},{"B","C"},{"C","F"},{"D","E"},{"E","F"},{"F","F"}};
+ 
+    
+     Manager(arr);
+  }
+}
