@@ -1,39 +1,34 @@
+
+
+
+
 import java.io.*;
 import java.util.*;
 import java.math.BigInteger;
 import java.util.Arrays;
 
-// you can also use imports, for example:
-// import java.util.*;
-
-// you can write to stdout for debugging purposes, e.g.
-// System.out.println("this is a debug message");
 
 class Solution {
-  static void checksumpair(int[] arr,int k)
-  {
+    static void findpair(int[] arr,int sum)
+    {
      
-     Hashtable ht=new Hashtable();
-     for(int i=0;i<arr.length;i++)
-     {
-         if(ht.containsKey(arr[i])==false)
-             ht.put(k-arr[i], arr[i]);
-         else
-         {
-             System.out.println(arr[i]+" + "+ht.get(arr[i])+" = "+k);
-         }
-     }
-   }
+        Hashtable ht=new Hashtable();
+        for(int i=0;i<arr.length;i++)
+        {
+            if(ht.containsKey(arr[i])==false)
+            {
+                ht.put(sum-arr[i], arr[i]);
+            }
+            else
+                System.out.println("pair "+(sum-arr[i])+" "+arr[i]);
+        }
+    }
   
-    
-    
   public static void main(String[] args)
   {
-  
-      int[] arr =  {1,2,3,4,5,6,7};
-      int[] arr2 = {3,0,4,1,2};
-       //System.out.println(Arrays.toString(arr));
-      checksumpair(arr,9);
-
+    int[] arr={1, 4, 45, 6, 10, -8};
+    int sum=16;
+    
+     findpair(arr,sum);
   }
 }

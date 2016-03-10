@@ -1,0 +1,41 @@
+
+
+
+
+import java.io.*;
+import java.util.*;
+import java.math.BigInteger;
+import java.util.Arrays;
+
+
+class Solution {
+    static void checkduplicateatk(int[] arr,int k)
+    {
+     
+        Hashtable ht=new Hashtable();
+        for(int i=0;i<arr.length;i++)
+        {
+            
+            if(ht.containsKey(arr[i])==true)
+            {
+               System.out.println("duplicate   "+arr[i]); 
+              
+            }
+            else
+             ht.put(arr[i],true);
+            
+            if(i>=k)
+                ht.remove(arr[i-k]);
+        }
+           
+        }
+    
+  
+  public static void main(String[] args)
+  {
+    int[] arr={1, 2, 3, 1,2,3};
+ 
+    
+     checkduplicateatk(arr,3);
+  }
+}
