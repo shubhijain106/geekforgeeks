@@ -1,0 +1,43 @@
+
+
+
+
+import java.io.*;
+import java.util.*;
+import java.math.BigInteger;
+import java.util.Arrays;
+
+
+class Solution 
+{
+    static void sumof4(int[] arr)
+    {
+     
+       
+        Hashtable ht=new Hashtable();
+        for(int i=0;i<arr.length-1;i++)
+        {
+            for(int j=i+1;j<arr.length;j++)
+            {
+                int sum=arr[i]+arr[j];
+                String s=Integer.toString(arr[i])+" "+Integer.toString(arr[j]);
+                if(ht.containsKey(sum)==false)
+                  ht.put(sum, s);
+                else
+                {
+                    System.out.println(ht.get(sum)+"="+arr[i]+" "+arr[j]);
+                }
+            }
+        }
+           
+    }
+    
+  
+  public static void main(String[] args)
+  {
+    int[] arr={3, 4, 7, 1, 12, 9};
+ 
+    
+     sumof4(arr);
+  }
+}
