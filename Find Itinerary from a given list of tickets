@@ -1,0 +1,64 @@
+
+
+import java.io.*;
+import java.util.*;
+import java.math.BigInteger;
+import java.util.Arrays;
+
+
+class Solution {
+    static void  Itinerary(HashMap hm)
+    {
+     
+        HashMap ht=new HashMap();
+        
+        Set s=hm.keySet();
+        Iterator it=s.iterator();
+        
+        while(it.hasNext())
+        {
+            Object str=it.next();
+            ht.put(hm.get(str),str);
+        }
+        
+        s=hm.keySet();
+        it=s.iterator();
+        String start=null;
+        while(it.hasNext())
+        {
+             Object str=it.next();
+            if(ht.containsKey(str)==true)
+                continue;
+            else
+            {
+                start=(String)str;
+                break;
+                
+            }   
+        }
+        s=hm.keySet();
+        it=s.iterator();
+        System.out.println(start);
+       
+       while(start!=null)
+        {
+            if(hm.containsKey(start))
+                System.out.println(start+"--->"+hm.get(start));
+            start=(String)hm.get(start);
+            
+        }
+    }
+    
+  
+  public static void main(String[] args)
+  {
+    String[][] arr={{"Chennai","Bangalore"},{"Bombay","Delhi"},{"Goa","Chennai"},{"Delhi","Goa"}};
+       HashMap hm=new HashMap();
+       for(int i=0;i<arr.length;i++)
+        {
+            hm.put(arr[i][0],arr[i][1]);
+        }
+    
+     Itinerary(hm);
+  }
+}
