@@ -1,0 +1,54 @@
+
+
+
+
+import java.io.*;
+import java.util.*;
+import java.math.BigInteger;
+import java.util.Arrays;
+
+
+class Solution {
+    static void unionintersction(LinkedList ll,LinkedList ll2)
+    {
+     
+        Hashtable ht=new Hashtable();
+        ArrayList arr=new ArrayList();
+        for(int i=0;i<ll.size();i++)
+        {
+            if(ht.containsKey(ll.get(i))==false)
+                ht.put(ll.get(i),true);
+        }
+        
+        for(int i=0;i<ll2.size();i++)
+        {
+          if(ht.containsKey(ll2.get(i))==false)
+                ht.put(ll2.get(i),true);
+          else
+              arr.add(ll2.get(i));
+        }
+       Set s=ht.keySet();
+       Iterator it=s.iterator();
+       while(it.hasNext())
+       {
+           System.out.print(it.next() +" ");
+       }
+       System.out.println("intersection  "+arr);
+    }
+  
+  public static void main(String[] args)
+  {
+     LinkedList ll=new LinkedList();
+     ll.add(10);
+     ll.add(15);
+     ll.add(4);
+     ll.add(20);
+      LinkedList ll2=new LinkedList();
+     ll2.add(8);
+     ll2.add(4);
+     ll2.add(2);
+     ll2.add(10);
+    
+     unionintersction(ll,ll2);
+  }
+}
